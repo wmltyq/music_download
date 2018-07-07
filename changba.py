@@ -21,7 +21,8 @@ def download(music_url, path):
         req = requests.get(url, headers=headers)
         html = req.text
         soup = BeautifulSoup(html, 'lxml')
-        title = soup.find('div', class_='title').get_text()
+        # FIXED: 去除文件名后一个空格
+        title = soup.find('div', class_='title').get_text().strip()
         # 因为audio的src属性是通过js动态生成的，所以此方法行不通
         # audio = soup.find('audio')['src']
         # 直接从js中提取
@@ -41,7 +42,7 @@ if __name__ == '__main__':
     # 乔丽的主页URL
     user_url = 'http://changba.com/u/193042513'
     # 存储路径
-    path = './唱吧/'
+    path = './乔丽/唱吧/'
     music_url = get_music_url(user_url)
     dir_exist(path)
     download(music_url, path)

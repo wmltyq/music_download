@@ -1,0 +1,11 @@
+# Intellij project files
+*.iml
+*.ipr
+*.iws
+.idea/
+
+__pycache__/
+
+# 忽略下载文件夹
+乔丽/
+叶莉/
